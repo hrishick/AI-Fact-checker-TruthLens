@@ -2,7 +2,7 @@
 
 🧠 **Advanced fact-checking powered by Google Gemini Vision API + Real-time Search**
 
-DEMO: https://7d37bc758c33.ngrok-free.app
+DEMO: 
 
 
 <div align="center">
