@@ -12,6 +12,3 @@
 - **🎯 Smart Scoring**: AI-powered credibility scoring with detailed explanations
 - **🌐 Multi-platform**: Works locally, on network, and via ngrok sharing
 - **⚡ Fast Analysis**: Results in 2-10 seconds with comprehensive breakdown
-
-## 🏗️ Architecture
-
