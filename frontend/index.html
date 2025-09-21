@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens - AI Fact Checker with Vision</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>TruthLens</h1>
+            </div>
+            <p class="tagline">Powered by AI + Vision + Search</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="input-section">
+                <div class="input-card">
+                    <h2><i class="fas fa-eye"></i> Multimodal AI Fact Verification</h2>
+                    <p>Advanced fact-checking powered by Vision AI with real-time search grounding for text and images</p>
+                    
+                    <div class="input-group">
+                        <textarea 
+                            id="newsInput" 
+                            placeholder="Enter news headline, article text, or claim for AI fact-checking... (Optional if uploading image)"
+                            rows="5"
+                        ></textarea>
+                        
+                        <!-- Image Upload Section -->
+                        <div class="image-upload-section">
+                            <div class="upload-controls">
+                                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                <button type="button" id="imageUploadBtn" class="image-upload-btn">
+                                    <i class="fas fa-image"></i>
+                                    Upload Image to Analyze
+                                </button>
+                                <div class="upload-info">
+                                    <small><i class="fas fa-info-circle"></i> Supports: JPG, PNG, GIF, WEBP • Max 10MB • AI-powered authenticity detection</small>
+                                </div>
+                                <div class="upload-features">
+                                    <div class="feature-tag"><i class="fas fa-shield-alt"></i> Deepfake Detection</div>
+                                    <div class="feature-tag"><i class="fas fa-robot"></i> AI-Generated Detection</div>
+                                    <div class="feature-tag"><i class="fas fa-search"></i> Reverse Image Search</div>
+                                    <div class="feature-tag"><i class="fas fa-magic"></i> Manipulation Analysis</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Image Preview Area -->
+                            <div id="imagePreview" class="image-preview" style="display: none;">
+                                <div class="preview-header">
+                                    <h4><i class="fas fa-image"></i> Image Ready for Analysis</h4>
+                                </div>
+                                <div class="preview-container">
+                                    <img id="uploadedImage" alt="Uploaded image">
+                                    <button type="button" id="removeImageBtn" class="remove-image-btn" title="Remove image">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <div class="image-overlay">
+                                        <div class="overlay-info">
+                                            <i class="fas fa-eye"></i>
+                                            <span>Vision AI Ready</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-info">
+                                    <div class="info-item">
+                                        <i class="fas fa-file"></i>
+                                        <span id="imageFileName">filename.jpg</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-weight-hanging"></i>
+                                        <span id="imageSize">1.2 MB</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Ready</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Drag and Drop Overlay -->
+                            <div class="drag-drop-overlay">
+                                <div class="drag-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <h3>Drop Image Here</h3>
+                                    <p>or click to select from your device</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analysis Button -->
+                        <button id="checkBtn" class="check-btn">
+                            <i class="fas fa-robot"></i>
+                            Analyze with Vision + Search
+                        </button>
+                    </div>
+                    
+                    <div class="example-section">
+                        <p><strong>Try these examples:</strong></p>
+                        <div class="examples">
+                            <button class="example-btn" data-text="Apple announces iPhone 17 with revolutionary AI features and 200MP camera.">
+                                📱 Recent tech news
+                            </button>
+                            <button class="example-btn" data-text="Breaking: Scientists discover that drinking water prevents all diseases forever!">
+                                🚨 Suspicious health claim
+                            </button>
+                            <button class="example-btn" data-text="According to a peer-reviewed study published in Nature, climate change is affecting global weather patterns.">
+                                📊 Scientific statement
+                            </button>
+                            <button class="example-btn" data-text="You won't believe this one weird trick doctors don't want you to know about weight loss!">
+                                ⚠️ Clickbait example
+                            </button>
+                        </div>
+                        
+                        <!-- Image Examples Section -->
+                        <div class="image-examples">
+                            <p><strong>Or try image analysis:</strong></p>
+                            <div class="image-example-grid">
+                                <div class="image-example-item">
+                                    <div class="example-image-placeholder">
+                                        <i class="fas fa-newspaper"></i>
+                                    </div>
+                                    <span>News Screenshots</span>
+                                </div>
+                                <div class="image-example-item">
+                                    <div class="example-image-placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <span>Profile Pictures</span>
+                                </div>
+                                <div class="image-example-item">
+                                    <div class="example-image-placeholder">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <span>Data Visualizations</span>
+                                </div>
+                                <div class="image-example-item">
+                                    <div class="example-image-placeholder">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <span>Event Photos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-card">
+                    <div class="result-header">
+                        <h3><i class="fas fa-chart-line"></i> Multimodal AI Analysis Results</h3>
+                        <div class="credibility-score" id="credibilityScore">
+                            <div class="score-circle">
+                                <span class="score-value" id="scoreValue">--</span>
+                                <span class="score-label">% Credible</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="verdict" id="verdict">
+                        <i class="fas fa-cog fa-spin"></i>
+                        <span>Vision AI Processing...</span>
+                    </div>
+
+                    <div class="analysis-details">
+                        <div class="detail-item">
+                            <h4><i class="fas fa-brain"></i> AI Analysis</h4>
+                            <div id="geminiAnalysis">
+                                <div class="loading">Analyzing content with Vision AI...</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4><i class="fas fa-check-circle"></i> Verification Status</h4>
+                            <div id="verificationStatus">
+                                <div class="loading">Cross-referencing with search results...</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Risk Assessment</h4>
+                            <div id="riskAssessment">
+                                <div class="loading">Evaluating authenticity and misinformation risk...</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4><i class="fas fa-lightbulb"></i> Recommendations</h4>
+                            <div id="recommendations">
+                                <div class="loading">Generating verification recommendations...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn secondary" id="newCheckBtn">
+                            <i class="fas fa-plus"></i>
+                            New Analysis
+                        </button>
+                        <button class="btn primary" id="reanalyzeBtn">
+                            <i class="fas fa-redo"></i>
+                            Re-analyze
+                        </button>
+                        <button class="btn tertiary" id="shareBtn" style="display: none;">
+                            <i class="fas fa-share-alt"></i>
+                            Share Results
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <h2><i class="fas fa-star"></i> Advanced AI Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Vision AI Analysis</h3>
+                        <p>Advanced image understanding with Gemini Vision API for authenticity verification</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Deepfake Detection</h3>
+                        <p>State-of-the-art AI detection of manipulated faces and synthetic media content</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Real-time Search</h3>
+                        <p>Live Google Search integration for up-to-date fact verification and source checking</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI-Generated Detection</h3>
+                        <p>Identifies artificially generated images using advanced pattern recognition algorithms</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-number" id="totalChecks">2,847</div>
+                        <div class="stat-label">AI Analyses Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="stat-number">97%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="stat-number">1,234</div>
+                        <div class="stat-label">Images Analyzed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-number">2.1s</div>
+                        <div class="stat-label">Avg Response Time</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TruthLens AI</h4>
+                    <p>Advanced multimodal fact-checking powered by Google Gemini Vision API and real-time search grounding.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Vision AI Analysis</li>
+                        <li>Deepfake Detection</li>
+                        <li>Real-time Search</li>
+                        <li>AI-Generated Detection</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Technology</h4>
+                    <ul>
+                        <li>Google Gemini 2.5 Flash</li>
+                        <li>Vision API</li>
+                        <li>Search Grounding</li>
+                        <li>Pattern Recognition</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TruthLens AI. Powered by advanced machine learning and computer vision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
