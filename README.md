@@ -2,7 +2,7 @@
 
 🧠 **Advanced fact-checking powered by Google Gemini Vision API + Real-time Search**
 
-![TruthLens Demo](https://via.placeholder.com/800x400/4285f4/ffffff?text=TruthLens+AI+Fact+Checker)
+![TruthLens Demo]([https://via.placeholder.com/800x400/4285f4/ffffff?text=TruthLens+AI+Fact+Checker](https://7d37bc758c33.ngrok-free.app))
 
 ## 🌟 Features
 
